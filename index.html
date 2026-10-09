@@ -1,0 +1,518 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>TrailMate AI | Touch Grass</title>
+
+    <link rel="stylesheet" href="style.css">
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Space+Grotesk:wght@500;600;700&display=swap"
+        rel="stylesheet"
+    >
+</head>
+
+<body>
+
+<!-- ================= NAVBAR ================= -->
+
+<header class="navbar">
+
+    <div class="logo">
+        <div class="logo-icon">🌿</div>
+        <div>
+            <h2>TrailMate</h2>
+            <span>AI Outdoor Companion</span>
+        </div>
+    </div>
+
+    <div class="nav-actions">
+        <div class="streak">
+            🔥 <span id="streakValue">0</span> day streak
+        </div>
+
+        <button class="profile-btn" onclick="showProfile()">
+            👤
+        </button>
+    </div>
+
+</header>
+
+
+<!-- ================= HERO ================= -->
+
+<section class="hero">
+
+    <div class="hero-content">
+
+        <div class="badge">
+            🌎 TOUCH GRASS
+        </div>
+
+        <h1>
+            AI that gets you
+            <span>outside.</span>
+        </h1>
+
+        <p>
+            Discover nature, complete real-world challenges,
+            and explore your surroundings with an AI companion
+            that knows when to get out of your way.
+        </p>
+
+        <button class="primary-btn" onclick="startAdventure()">
+            🚀 Start Adventure
+        </button>
+
+    </div>
+
+    <div class="hero-art">
+
+        <div class="sun"></div>
+
+        <div class="mountain mountain-back"></div>
+        <div class="mountain mountain-front"></div>
+
+        <div class="tree tree-one">🌲</div>
+        <div class="tree tree-two">🌳</div>
+        <div class="tree tree-three">🌲</div>
+
+    </div>
+
+</section>
+
+
+<!-- ================= DASHBOARD ================= -->
+
+<section class="dashboard">
+
+    <div class="section-title">
+        <div>
+            <span class="small-label">YOUR JOURNEY</span>
+            <h2>Today's Adventure</h2>
+        </div>
+
+        <div class="xp-box">
+            <span>XP</span>
+            <strong id="xpValue">0</strong>
+        </div>
+    </div>
+
+
+    <div class="stats-grid">
+
+        <div class="stat-card">
+            <div class="stat-icon">🚶</div>
+            <span>Distance</span>
+            <strong id="distanceValue">0 km</strong>
+        </div>
+
+        <div class="stat-card">
+            <div class="stat-icon">🌱</div>
+            <span>Discoveries</span>
+            <strong id="discoveryValue">0</strong>
+        </div>
+
+        <div class="stat-card">
+            <div class="stat-icon">🏆</div>
+            <span>Challenges</span>
+            <strong id="challengeValue">0</strong>
+        </div>
+
+        <div class="stat-card">
+            <div class="stat-icon">📵</div>
+            <span>Phone-free</span>
+            <strong id="phoneFreeValue">0 min</strong>
+        </div>
+
+    </div>
+
+</section>
+
+
+<!-- ================= AI CHALLENGE ================= -->
+
+<section class="main-section">
+
+    <div class="section-heading">
+
+        <div>
+            <span class="small-label">AI ADVENTURE ENGINE</span>
+
+            <h2>Your next mission</h2>
+
+            <p>
+                Let AI create a challenge based on your surroundings.
+            </p>
+        </div>
+
+        <button class="secondary-btn" onclick="generateChallenge()">
+            ✨ Generate Challenge
+        </button>
+
+    </div>
+
+
+    <div class="challenge-card">
+
+        <div class="challenge-image">
+            🌳
+        </div>
+
+        <div class="challenge-content">
+
+            <div class="challenge-tag">
+                AI GENERATED
+            </div>
+
+            <h3 id="challengeTitle">
+                Nature Detective
+            </h3>
+
+            <p id="challengeText">
+                Find something around you with three different
+                shades of green. Observe it for 30 seconds.
+            </p>
+
+            <div class="challenge-meta">
+
+                <span>⏱ 10 min</span>
+                <span>⭐ +25 XP</span>
+
+            </div>
+
+            <button
+                class="complete-btn"
+                onclick="completeChallenge()"
+            >
+                ✓ Complete Mission
+            </button>
+
+        </div>
+
+    </div>
+
+</section>
+
+
+<!-- ================= AI NATURE SCANNER ================= -->
+
+<section class="main-section">
+
+    <div class="section-heading">
+
+        <div>
+
+            <span class="small-label">AI NATURE SCANNER</span>
+
+            <h2>What did you find?</h2>
+
+            <p>
+                Take a photo of a plant, leaf, flower, bird or
+                other natural object.
+            </p>
+
+        </div>
+
+    </div>
+
+
+    <div class="scanner">
+
+        <div class="upload-area" id="uploadArea">
+
+            <div class="upload-icon">
+                📸
+            </div>
+
+            <h3>Scan Nature</h3>
+
+            <p>
+                Upload a photo and let AI analyze it.
+            </p>
+
+            <label class="upload-btn">
+
+                Choose Photo
+
+                <input
+                    type="file"
+                    id="imageInput"
+                    accept="image/*"
+                    hidden
+                >
+
+            </label>
+
+        </div>
+
+
+        <div class="preview-area hidden" id="previewArea">
+
+            <img id="previewImage" alt="Nature preview">
+
+            <div class="scan-result">
+
+                <div class="ai-label">
+                    🤖 AI ANALYSIS
+                </div>
+
+                <h3 id="resultName">
+                    Analyzing...
+                </h3>
+
+                <p id="resultDescription">
+                    AI is examining your discovery.
+                </p>
+
+                <div class="confidence">
+
+                    <span>Confidence</span>
+
+                    <strong id="confidenceValue">
+                        --
+                    </strong>
+
+                </div>
+
+                <button
+                    class="secondary-btn"
+                    onclick="newScan()"
+                >
+                    Scan Another
+
+                </button>
+
+            </div>
+
+        </div>
+
+    </div>
+
+</section>
+
+
+<!-- ================= PHONE DOWN ================= -->
+
+<section class="phone-section">
+
+    <div class="phone-content">
+
+        <div class="phone-icon">
+            📵
+        </div>
+
+        <span class="small-label">
+            MOST IMPORTANT FEATURE
+        </span>
+
+        <h2>
+            Phone Down Mode
+        </h2>
+
+        <p>
+            Your phone shouldn't be the destination.
+            Start a timer, put your phone away,
+            and enjoy the real world.
+        </p>
+
+        <div class="timer" id="timer">
+            10:00
+        </div>
+
+        <button
+            class="primary-btn"
+            id="phoneBtn"
+            onclick="togglePhoneMode()"
+        >
+            📵 Start Phone Down
+        </button>
+
+    </div>
+
+</section>
+
+
+<!-- ================= ACHIEVEMENTS ================= -->
+
+<section class="main-section">
+
+    <div class="section-heading">
+
+        <div>
+
+            <span class="small-label">
+                YOUR PROGRESS
+            </span>
+
+            <h2>
+                Nature Explorer
+            </h2>
+
+        </div>
+
+        <div class="level">
+            Level <strong id="levelValue">1</strong>
+        </div>
+
+    </div>
+
+
+    <div class="progress-card">
+
+        <div class="progress-info">
+
+            <span>
+                Progress to next level
+            </span>
+
+            <strong>
+                <span id="currentXP">0</span> / 100 XP
+            </strong>
+
+        </div>
+
+        <div class="progress-bar">
+
+            <div
+                class="progress-fill"
+                id="progressFill"
+            ></div>
+
+        </div>
+
+    </div>
+
+
+    <div class="achievements">
+
+        <div class="achievement" id="achievement1">
+
+            <div>🌱</div>
+
+            <span>
+                First Discovery
+            </span>
+
+        </div>
+
+        <div class="achievement locked" id="achievement2">
+
+            <div>🥾</div>
+
+            <span>
+                Trail Walker
+            </span>
+
+        </div>
+
+        <div class="achievement locked" id="achievement3">
+
+            <div>🦜</div>
+
+            <span>
+                Bird Watcher
+            </span>
+
+        </div>
+
+        <div class="achievement locked" id="achievement4">
+
+            <div>🌳</div>
+
+            <span>
+                Nature Pro
+            </span>
+
+        </div>
+
+    </div>
+
+</section>
+
+
+<!-- ================= FOOTER ================= -->
+
+<footer>
+
+    <div class="footer-logo">
+        🌿 TrailMate AI
+    </div>
+
+    <p>
+        AI that gets you outside — and then gets out of your way.
+    </p>
+
+    <span>
+        Built for Touch Grass 🌎
+    </span>
+
+</footer>
+
+
+<!-- ================= PROFILE MODAL ================= -->
+
+<div class="modal hidden" id="profileModal">
+
+    <div class="modal-content">
+
+        <button
+            class="close-btn"
+            onclick="closeProfile()"
+        >
+            ×
+        </button>
+
+        <div class="profile-avatar">
+            🌿
+        </div>
+
+        <h2>Nature Explorer</h2>
+
+        <p>
+            Keep exploring the real world.
+        </p>
+
+        <div class="profile-stat">
+
+            <span>Total XP</span>
+
+            <strong id="profileXP">
+                0
+            </strong>
+
+        </div>
+
+        <div class="profile-stat">
+
+            <span>Discoveries</span>
+
+            <strong id="profileDiscoveries">
+                0
+            </strong>
+
+        </div>
+
+        <div class="profile-stat">
+
+            <span>Outdoor Challenges</span>
+
+            <strong id="profileChallenges">
+                0
+            </strong>
+
+        </div>
+
+    </div>
+
+</div>
+
+
+<script src="script.js"></script>
+
+</body>
+</html>
